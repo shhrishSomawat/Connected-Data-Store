@@ -1,6 +1,6 @@
 ## Connected Data Store
 
-# Stage 1: Create a Connected Data Store
+# Stage 1: Create a Connected Data Store : Create and implement a data structure similar to a blockchain based on the below requirements.
 
 ## Requirements:
 
