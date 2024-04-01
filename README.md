@@ -1,6 +1,6 @@
-## Connected Data Store
+# Connected Data Store : Create a Connected Data Store : Create and implement a data structure similar to a blockchain based on the below requirements.
 
-# Stage 1: Create a Connected Data Store : Create and implement a data structure similar to a blockchain based on the below requirements.
+## Stage 1: Create a Connected Data Store
 
 ## Requirements:
 
@@ -14,16 +14,16 @@
 ### Initial Block:
 - The first block should have 0000 as the Prev Hash.
 
-## Steps:
+### Steps:
 1. Define the data store object structure with the specified properties.
 2. Implement a method to generate the hash of a data store object based on the cryptographic algorithm and input parameters.
 3. Create the initial block with 0000 as the Prev Hash.
 
 ---
 
-# Stage 2: Correction State
+## Stage 2: Correction State
 
-## Requirements:
+### Requirements:
 
 ### Correct Data Store Object:
 - A data store object is considered correct if its hash follows a specified pattern (e.g., first 4 digits are zero).
@@ -40,7 +40,7 @@
 - Updating any field in a data store object should trigger a recalculation of the hash.
 - Recalculation should propagate to further connected data store objects.
 
-## Steps:
+### Steps:
 1. Add a Correction Value field to the data store object.
 2. Implement a method to calculate the Correction Value for an object to meet the specified hash pattern.
 3. Update the hash of the object based on the new Correction Value.
