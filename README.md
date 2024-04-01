@@ -1,29 +1,52 @@
 ## Connected Data Store
 
-## Requirement :
-Create a data store similar to a blockchain to create a connected chain of nodes storing data which are verifiable and tamper proof.
+# Stage 1: Create a Connected Data Store
 
-### Stage 1: Create a Connected Data Store
+## Requirements:
 
-- The  Data Store Object should have the following properties:
-  - Index
-  - Maximum of 1024 Bytes of Characters as data
-  - Prev Hash
-  - Current Hash: Based on any cryptographic algorithm, generate a hash. Hash function should include the following parameters as input:
-    1. Index
-    2. Data
-    3. Prev Hash
-  - Output: `<Fixed-Length-Hash>`
+### Data Store Object Structure:
+- Each data store object should have:
+  - Index: Unique identifier for the object.
+  - Data: Maximum of 1024 bytes of characters.
+  - Prev Hash: Hash of the previous data store object.
+  - Current Hash: Hash generated based on cryptographic algorithm using Index, Data, and Prev Hash.
 
-  **Notes:** The first Block will have 0000 as prevHash.
+### Initial Block:
+- The first block should have 0000 as the Prev Hash.
 
-### Stage 2: Correction State
+## Steps:
+1. Define the data store object structure with the specified properties.
+2. Implement a method to generate the hash of a data store object based on the cryptographic algorithm and input parameters.
+3. Create the initial block with 0000 as the Prev Hash.
 
-- A Data Store Object is said to be "Correct" if the generated Hash follows a certain pattern, which is true for all connected objects. For example, the first 4 digits of the Hash are zero.
-- Add a `correction_value` field in the object, which will store the additional data. This field's data, when taken into consideration with all the other fields in the object while calculating hash, should produce a hash with our pattern. Note: The pattern can be anything but should be consistent across all objects.
-- Write a function to find any particular Object's Correction Value and update that object's Hash with the new hash. Note: Updating any field in a DataObject shall trigger a recalculation of the hash, which shall then trigger recalculation on any further connected DataStores.
+---
 
-## Implementation
+# Stage 2: Correction State
 
-Feel Free to Use any Programming language to Code this requirement.
-You can also create a UI that shows this functionality in action or it can be a terminal program.
+## Requirements:
+
+### Correct Data Store Object:
+- A data store object is considered correct if its hash follows a specified pattern (e.g., first 4 digits are zero).
+- Addition of a Correction Value field in the object.
+
+### Correction Value Calculation:
+- The Correction Value should be calculated in such a way that when combined with other fields, it produces a hash with the specified pattern.
+
+### Hash Update:
+- Ability to find a particular object's Correction Value.
+- Update the object's hash based on the new Correction Value.
+
+### Recalculation Trigger:
+- Updating any field in a data store object should trigger a recalculation of the hash.
+- Recalculation should propagate to further connected data store objects.
+
+## Steps:
+1. Add a Correction Value field to the data store object.
+2. Implement a method to calculate the Correction Value for an object to meet the specified hash pattern.
+3. Update the hash of the object based on the new Correction Value.
+4. Implement a function to find a particular object's Correction Value and update its hash.
+5. Ensure that updating any field triggers hash recalculation and cascades to connected data store objects.
+
+
+The solution can be created on any tech stack. 
+Create a fork of this repository and build your solution on the fork and share the forked repository address over email in the stipulated time.
