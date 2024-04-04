@@ -1,52 +1,50 @@
-# Connected Data Store : Create a Connected Data Store : Create and implement a data structure similar to a blockchain based on the below requirements.
+# Connected Data Store
 
-## Stage 1: Create a Connected Data Store
+## Overview
+This Python code implements a Connected Data Store, which is a data structure similar to a blockchain. It allows for the creation of data store objects with unique identifiers, data, and references to previous objects. The code also includes functionality for ensuring data integrity through hash validation and correction.
 
-## Requirements:
+## Problem Statement
+The goal of this project is to create a data structure that mimics the behavior of a blockchain, providing secure storage and verification of data. The system should be able to generate hashes for data store objects and ensure that the data remains intact and unaltered.
 
-### Data Store Object Structure:
-- Each data store object should have:
-  - Index: Unique identifier for the object.
-  - Data: Maximum of 1024 bytes of characters.
-  - Prev Hash: Hash of the previous data store object.
-  - Current Hash: Hash generated based on cryptographic algorithm using Index, Data, and Prev Hash.
+## Solution Approach
+To achieve the objectives outlined in the problem statement, the following approach was taken:
 
-### Initial Block:
-- The first block should have 0000 as the Prev Hash.
+1. **Data Store Object**: Defined a class `Data_Store_Object` to represent each object in the data store, containing attributes for index, data, previous hash, correction value, and current hash.
 
-### Steps:
-1. Define the data store object structure with the specified properties.
-2. Implement a method to generate the hash of a data store object based on the cryptographic algorithm and input parameters.
-3. Create the initial block with 0000 as the Prev Hash.
+2. **Hash Generation**: Implemented a hash function using the hashlib library to generate hashes for data store objects based on their attributes.
 
----
+3. **Correction Value Calculation**: Developed a function to calculate the correction value for a data store object, ensuring that the hash meets specified patterns (e.g., leading zeros).
 
-## Stage 2: Correction State
+4. **Hash Update**: Implemented methods to update the hash of a data store object after modifying its attributes or correction value.
 
-### Requirements:
+## System Architecture
+The system architecture consists of a Python script containing the implementation of the data store object and related functions. It follows an object-oriented design, with a clear separation of concerns between the data store object class and the hash generation/correction logic.
 
-### Correct Data Store Object:
-- A data store object is considered correct if its hash follows a specified pattern (e.g., first 4 digits are zero).
-- Addition of a Correction Value field in the object.
+## Usage
+To use the Connected Data Store, follow these steps:
 
-### Correction Value Calculation:
-- The Correction Value should be calculated in such a way that when combined with other fields, it produces a hash with the specified pattern.
+1. Instantiate the initial block using the `DataStoreObject` class.
+2. Modify data store objects as needed, updating their attributes and correction values.
+3. Ensure data integrity by recalculating hashes and correction values when necessary.
 
-### Hash Update:
-- Ability to find a particular object's Correction Value.
-- Update the object's hash based on the new Correction Value.
+## Documentation
+### Data Store Object Class
+#### Attributes
+- `index`: Unique identifier for the object.
+- `data`: Data stored in the object.
+- `previous_hash`: Hash of the previous data store object.
+- `correctionValue`: Correction value used for hash correction.
+- `current_hash`: Hash generated based on cryptographic algorithm using index, data, previous hash, and correction value.
 
-### Recalculation Trigger:
-- Updating any field in a data store object should trigger a recalculation of the hash.
-- Recalculation should propagate to further connected data store objects.
+#### Methods
+- `evaluate_hash()`: Method to calculate the hash of the data store object.
+- `update_hash()`: Method to update the current hash of the object.
 
-### Steps:
-1. Add a Correction Value field to the data store object.
-2. Implement a method to calculate the Correction Value for an object to meet the specified hash pattern.
-3. Update the hash of the object based on the new Correction Value.
-4. Implement a function to find a particular object's Correction Value and update its hash.
-5. Ensure that updating any field triggers hash recalculation and cascades to connected data store objects.
+### Other Functions
+- `hash_function(data)`: Function to generate a hash using the hashlib library.
+- `calculate_correctionValue(data_store_object, pattern)`: Function to calculate the correction value for a data store object.
+- `update_hash_with_correctionValue(data_store_object)`: Function to update the hash of a data store object with its correction value.
+- `update_data(data_store_object, index, data, previous_hash)`: Function to update the attributes of a data store object and recalculate its hash.
 
-
-The solution can be created on any tech stack. 
-Create a fork of this repository and build your solution on the fork and share the forked repository address over email in the stipulated time.
+## Contributors
+-[Shrish Somawat]
